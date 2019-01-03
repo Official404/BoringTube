@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BoringTube</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="src/jQuery/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <a href="index.html"><img id="img" src="src/img/logo cirkle.png" alt="Avatar" width="50" height="50"></a>
+
+        <button id="autohorize-button" style="display: none">Sign In</button>
+        <button id="signout-button" style="display: none">Sign Out</button>
+        
+        <button id="random-button" style="display: none">Random</button>
+        <button id="serach-button" style="display: none">Serach</button>
+
+        <input id="serach-bar" type="text" style="display: none" />
+        <p></p>
+    </div>
+    
+    <pre class="content">
+            <iframe id="video" width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <div class="creator-info">
+                <img id="creator-avatar" src="src/img/imvAvatar.png" width="50" height="50">
+                <h3 id="creator-name"></h3>
+            </div>
+    </pre>
+    <script src="main.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js" 
+            onload="this.onload=function(){};handleClientLoad()"
+            onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+</body>
+</html>

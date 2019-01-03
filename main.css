@@ -1,0 +1,61 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url(src/img/gradiant.png);
+    background-repeat: no-repeat;
+}
+
+.header img {
+    border-radius: 50%;
+    border: 1px gray solid;
+}
+
+.content {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-top: 100px;
+}
+
+.creator-info {
+    margin-left: 100px;
+}
+
+.creator-info img {
+    float: left;
+    border-radius: 50%;
+}
+
+.creator-info h3 {
+    float: left;
+    padding-left: 10px;
+}
+
+.header {
+    padding: 5px;
+    background-color: #ffc94d;
+    overflow: hidden;
+}
+
+.header input[type=text]{
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
+
+.header button{
+    border-radius: 10%;
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 17px;
+}
