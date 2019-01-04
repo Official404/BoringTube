@@ -1,9 +1,6 @@
-var CLIENT_ID = '<YOURE-CLIENT-ID>';
+var API_ID = 'AIzaSyAVfIygmpfTro4kPisWFLfEcx5zw7vwxvE';
 var DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'];
 var SCOPES = 'https://www.googleapis.com/auth/youtube.readonly';
-
-var authorizeButton = document.getElementById('autohorize-button');
-var signoutButton = document.getElementById('signout-button');
 
 var searchButton = document.getElementById('serach-button');
 var serachBar = document.getElementById('serach-bar');
@@ -15,60 +12,29 @@ var creatorAvatar = document.getElementById('creator-avatar');
 var creatorName = document.getElementById('creator-name');
 
 function handleClientLoad() {
-    gapi.load('client:auth2', initClient);
-  }
+    gapi.load('client', initClient);
+}
 
-  function initClient() {
+function initClient() {
     gapi.client.init({
-      discoveryDocs: DISCOVERY_DOCS,
-      clientId: CLIENT_ID,
-      scope: SCOPES
+        discoveryDocs: DISCOVERY_DOCS,
+        apiKey: API_ID,
+        scope: SCOPES
     }).then(function () {
-      gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-      updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-      authorizeButton.onclick = handleAuthClick;
-      signoutButton.onclick = handleSignoutClick;
-      searchButton.onclick = handleSearchClick;
-      randomButton.onclick = handleRandomSearchClick;
+        searchButton.onclick = handleSearchClick;
+        randomButton.onclick = handleRandomSearchClick;
     });
-  }
+}
 
-  function updateSigninStatus(isSignedIn) {
-    if (isSignedIn) {
-      authorizeButton.style.display = 'none';
-      signoutButton.style.display = 'block';
-      serachBar.style.display = 'block';
-      searchButton.style.display = 'block';
-      randomButton.style.display = 'block';
-      getChannel();
-    } else {
-      authorizeButton.style.display = 'block';
-      signoutButton.style.display = 'none';
-      serachBar.style.display = 'none';
-      searchButton.style.display = 'none';
-      randomButton.style.display = 'none';
-    }
-  }
-
-  function handleAuthClick(event) {
-    gapi.auth2.getAuthInstance().signIn();
-  }
-
-  function handleSignoutClick(event) {
-    gapi.auth2.getAuthInstance().signOut();
-    img.src = "src/img/logo cirkle.png";
-  }
-
-  function handleSearchClick(event){
+function handleSearchClick(event){
     SearchVideo();
-  }
+}
 
-  function handleRandomSearchClick(event){
+function handleRandomSearchClick(event){
     SearchRandomVideo();
-  }
+}
 
-  function getChannel() {
+function getChannel() {
     gapi.client.youtube.channels.list({
         'part': 'snippet,contentDetails,statistics',
         'mine': 'true'
@@ -77,14 +43,14 @@ function handleClientLoad() {
         var img = document.getElementById('img');
         img.src = channel.snippet.thumbnails.default.url;
     });
-  }
+}
 
-  // Returns random number between 0 and max-1
-  function getRandomInt(max){
+// Returns random number between 0 and max-1
+function getRandomInt(max){
     return Math.floor(Math.random() * Math.floor(max));
-  }
-  
-  function SearchRandomVideo(){
+}
+
+function SearchRandomVideo(){
     var json = (function(){
         var json = null;
         $.ajax({
@@ -121,9 +87,9 @@ function handleClientLoad() {
         videoWindow.src = 'https://www.youtube.com/embed/' + response.result.items[a].id.videoId;
         videoWindow.style.border = "1px black solid";
     });
-  }
+}
 
-  function SearchVideo(){
+function SearchVideo(){
     var search = serachBar.value;
     serachBar.value = '';
     gapi.client.youtube.search.list({
@@ -145,4 +111,4 @@ function handleClientLoad() {
         videoWindow.src = 'https://www.youtube.com/embed/' + response.result.items[a].id.videoId;
         videoWindow.style.border = "1px black solid";
     });
-  }
+}
