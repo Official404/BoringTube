@@ -34,17 +34,6 @@ function handleRandomSearchClick(event){
     SearchRandomVideo();
 }
 
-function getChannel() {
-    gapi.client.youtube.channels.list({
-        'part': 'snippet,contentDetails,statistics',
-        'mine': 'true'
-    }).then(function(response) {
-        var channel = response.result.items[0];
-        var img = document.getElementById('img');
-        img.src = channel.snippet.thumbnails.default.url;
-    });
-}
-
 // Returns random number between 0 and max-1
 function getRandomInt(max){
     return Math.floor(Math.random() * Math.floor(max));
