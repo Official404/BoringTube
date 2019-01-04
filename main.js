@@ -1,4 +1,4 @@
-var API_ID = 'AIzaSyAVfIygmpfTro4kPisWFLfEcx5zw7vwxvE';
+var API_ID = '<YOURE-API-HERE>';
 var DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest'];
 var SCOPES = 'https://www.googleapis.com/auth/youtube.readonly';
 
